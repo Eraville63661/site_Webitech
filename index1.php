@@ -35,7 +35,7 @@ $result = $conn->query($sql); //Execution de la requete SQL
                <input type="submit" name="formsend" id="formsend">
       </form>
 
-      <?php
+       <?php 
          if(isset($_POST['formsend'])){
              $pseudo = $_POST['pseudo'];
              $age = $_POST['age'];
@@ -58,7 +58,7 @@ $result = $conn->query($sql); //Execution de la requete SQL
 
 
 <html>
-<head><title>PHP</title></head>
+<head><title>Inscription</title></head>
 <body>
 
 <h1> Renseigne tes informations personnel</h1>
@@ -80,15 +80,15 @@ $result = $conn->query($sql); //Execution de la requete SQL
    <td><input type="text" name="email" required></td>
 </tr>
 <tr>
-   <td>nom</td>
+   <td>Nom</td>
    <td><input type="text" name="nom" required></td>
 </tr>
 <tr>
-   <td>prenom</td>
+   <td>Prenom</td>
    <td><input type="text" name="prenom" required></td>
 </tr>
 <tr>
-   <td>age</td>
+   <td>Age</td>
    <td><input type="text" name="age" required></td>
 </tr>
 <tr>
@@ -104,7 +104,7 @@ $result = $conn->query($sql); //Execution de la requete SQL
    <td><input type="text" name="ville_naissance" required></td>
 </tr>
 <tr>
-   <td>adresse</td>
+   <td>Adresse</td>
    <td><input type="text" name="adresse" required></td>
 </tr>
 <tr>
@@ -113,7 +113,7 @@ $result = $conn->query($sql); //Execution de la requete SQL
 </tr>
 <tr>
    <td>Telephone</td>
-   <td><input type="text" name="numero_de_passeport" required></td>
+   <td><input type="text" name="numero_tel" required></td>
 </tr>
 <tr>
    <td>Role</td>
