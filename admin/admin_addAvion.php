@@ -15,7 +15,7 @@
             if($result['role'] == 'admin'){
 
                 $sql = "INSERT INTO avion 
-                VALUES (NULL, '" . $_POST['model'] . "', '" . $_POST['nb_places'] . "', '" . $_POST['nb_places_max'] . "')";
+                VALUES (NULL, '" . $_POST['model'] . "', '" . $_POST['nb_places'] . "')";
 
                 if ($connect -> query($sql) == TRUE)
                     echo "alert('Ajout effectué !')";
