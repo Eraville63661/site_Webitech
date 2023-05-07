@@ -1,0 +1,51 @@
+<?php
+    $srvname = "localhost";
+    $usrname = "root";
+    $psw = "";
+    $dbname = "mon_site";
+
+    $connect = new mysqli($srvname, $usrname, $psw, $dbname);
+
+    if(isset($_SESSION['id_utilisateur'])){
+
+        $verif = "SELECT role from utilisateur where id_utilisateur = '".$_SESSION['id_utilisateur']."'";
+        
+        if ($connect -> query($verif) == TRUE){
+            $result = $connect->query($verif);
+            if($result['role'] == 'admin'){
+
+                $sql = "SELECT id_vol FROM vol WHERE id_avion = '" . $_POST['id_avion'] . "'"; //Est-ce que je trouve un vol avec mon avion ?
+
+                if ($connect -> query($sql) == TRUE){//Si oui, je supprime les réservations et le vol
+                    $result = $connect->query($verif);
+                    $sql = "DELETE FROM reservation WHERE id_vol = '" . $result['id_vol'] . "'";
+
+                    if ($connect -> query($sql) == TRUE){
+                        $sql = "DELETE FROM vol WHERE id_vol = '" . $result['id_vol'] . "'";
+
+                        if ($connect -> query($sql) == TRUE){
+                            $sql = "DELETE FROM avion WHERE id_avion = '" . $_POST['id_avion'] . "'";
+
+                            if ($connect -> query($sql) == TRUE)
+                                echo "alert('Suppression des réservations, du vol et de l'avion effectué !')";
+                            else
+                                echo "alert('Erreur de suppression de l'avion :" . $sql . "<br>" . $connect->error."')";
+
+                        }else
+                            echo "alert('Erreur de suppression du vol :" . $sql . "<br>" . $connect->error."')";
+                    }
+                    else
+                        echo "alert('Erreur de suppression des réservations :" . $sql . "<br>" . $connect->error."')";
+
+                } else { //Sinon je ne supprime que l'avion
+                    $sql = "DELETE FROM avion WHERE id_avion = '" . $_POST['id_avion'] . "'";
+                    if ($connect -> query($sql) == TRUE)
+                        echo "alert('Suppression des réservations, du vol et de l'avion effectué !')";
+                    else
+                        echo "alert('Erreur de suppression de l'avion :" . $sql . "<br>" . $connect->error."')";
+                }
+            }
+        }
+    }
+    $connect->close();
+?>
