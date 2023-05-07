@@ -1,4 +1,16 @@
 <?php 
+// si la variable globale "$_SESSION['user_id']" existe <=> utilisateur est connecté
+//=> supprimer la variable en utilisant unset() <=> l'utilisateur est déconnecté et toutes les informations 
+//stocker dans $_SESSION seront supprimées 
+if(isset($_SESSION['user_id'])){
+	unset($_SESSION['user_id']);
+//utilisateur connecté
+//utilisateur déconnecté
+//ceci peut etre utile pour s'assurer que l'utilisateur ne peut plus accéder à des fonctionnalités réservées aux UserConnectées
+
+//=> déconnecter un utilisateur en supprimant sa variable $_SESSION['user_id']
+}
+
 
       $pseudo = "Gravenilec";
       $age =18;
