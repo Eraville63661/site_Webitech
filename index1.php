@@ -1,24 +1,24 @@
 <?php 
-// si la variable globale "$_SESSION['user_id']" existe <=> utilisateur est connecté
-//=> supprimer la variable en utilisant unset() <=> l'utilisateur est déconnecté et toutes les informations 
-//stocker dans $_SESSION seront supprimées 
-if(isset($_SESSION['user_id'])){
-	unset($_SESSION['user_id']);
-//utilisateur connecté
-//utilisateur déconnecté
-//ceci peut etre utile pour s'assurer que l'utilisateur ne peut plus accéder à des fonctionnalités réservées aux UserConnectées
 
-//=> déconnecter un utilisateur en supprimant sa variable $_SESSION['user_id']
-}
+$servername = "localhost"; //serveur
+$username = "root";             //identifiant
+$password = "";                 //mot de passe
+$dbname = "mon_site";               //nom de la base de données
 
+$conn = new mysqli($servername, $username, $password, $dbname);  //connexion à MySQL
 
-      $pseudo = "Gravenilec";
-      $age =18;
-      $email = "mehdi@gmail.com"
+$sql = "SELECT * FROM avion"; //Requete SQL, 
+$sql = "SELECT * FROM destinantion"; //Requete SQL, 
+$sql = "SELECT * FROM utilisateurs"; //Requete SQL, 
+$sql = "SELECT * FROM vol"; //Requete SQL, 
+
+$result = $conn->query($sql); //Execution de la requete SQL
+
 
 ?>
 
 <!DOCTYPE html>
+<!--  
 <html>
 <head>
       <title>Titre</title>
@@ -53,6 +53,92 @@ if(isset($_SESSION['user_id'])){
 </body>
 </html>
 
+  -->
 
 
 
+<html>
+<head><title>PHP</title></head>
+<body>
+
+<h1> Renseigne tes informations personnel</h1>
+<form action="insertion.php" method="post">
+<fieldset>
+
+<legend>Insertion dans la base de donn&eacute;es</legend>
+<table>
+<tr>
+   <td>identifiant</td>
+   <td><input type="text" name="identifiant" required></td>
+</tr>
+<tr>
+   <td>Mot de passe</td>
+   <td><input type="text" name="mot_de_passe" required></td>
+</tr>
+<tr>
+   <td>email</td>
+   <td><input type="text" name="email" required></td>
+</tr>
+<tr>
+   <td>nom</td>
+   <td><input type="text" name="nom" required></td>
+</tr>
+<tr>
+   <td>prenom</td>
+   <td><input type="text" name="prenom" required></td>
+</tr>
+<tr>
+   <td>age</td>
+   <td><input type="text" name="age" required></td>
+</tr>
+<tr>
+   <td>Nationalite</td>
+   <td><input type="text" name="nationalite" required></td>
+</tr>
+<tr>
+   <td>Pays de naissance</td>
+   <td><input type="text" name="pays_naissance" required></td>
+</tr>
+<tr>
+   <td>Ville de naissance</td>
+   <td><input type="text" name="ville_naissance" required></td>
+</tr>
+<tr>
+   <td>adresse</td>
+   <td><input type="text" name="adresse" required></td>
+</tr>
+<tr>
+   <td>Numero de passeport</td>
+   <td><input type="text" name="numero_de_passeport" required></td>
+</tr>
+<tr>
+   <td>Telephone</td>
+   <td><input type="text" name="numero_de_passeport" required></td>
+</tr>
+<tr>
+   <td>Role</td>
+   <td><input type="text" name="role" required></td>
+</tr>
+
+
+
+<!--  
+<tr>
+   <label for="choisir un carburant">Choisir un carburant:</label>
+    <select name="carburant" id="carburant">
+    <option value="">choisir un carburant</option>
+    <option value="diesel">diesel</option>
+    <option value="essence">essence</option>
+    <option value="G.P.L">G.P.L</option>
+    <option value="electrique">electrique</option>
+
+</select>
+</tr> 
+-->
+<tr>
+	<td><input type="submit" value="Insertion"></td>
+	<td><input type="reset" value="Reinitialiser"></td>
+</tr>	
+</table>
+</fieldset>
+</form>
