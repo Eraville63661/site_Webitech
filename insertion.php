@@ -13,7 +13,7 @@ $sql = "INSERT INTO utilisateurs VALUES (NULL, '".$_POST['identifiant']."', '".$
 
 if ($conn->query($sql) == TRUE) {  //Execution de la requete SQL
     echo("<script>alert('Nouvel enregistrement créé avec succès!')</script>");
-    echo("<script>window.location = 'index1.php';</script>");
+    echo("<script>window.location = 'inscription.php';</script>");
 } 
 else {
   echo "Error: " . $sql . "<br>" . $conn->error;
