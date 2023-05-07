@@ -26,7 +26,6 @@ CREATE TABLE `avion` (
   `id_avion` int NOT NULL AUTO_INCREMENT,
   `model` varchar(45) DEFAULT NULL,
   `nb_places` int DEFAULT NULL,
-  `nb_places_max` int DEFAULT NULL,
   PRIMARY KEY (`id_avion`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -37,7 +36,7 @@ CREATE TABLE `avion` (
 
 LOCK TABLES `avion` WRITE;
 /*!40000 ALTER TABLE `avion` DISABLE KEYS */;
-INSERT INTO `avion` VALUES (1,'Airbus A380',400,400);
+INSERT INTO `avion` VALUES (1,'Airbus A380',400);
 /*!40000 ALTER TABLE `avion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-07 18:03:37
+-- Dump completed on 2023-05-07 20:54:35

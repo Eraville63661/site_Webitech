@@ -14,28 +14,20 @@ $sql = "SELECT * FROM utilisateurs where prenom = 'ryan'"; //Requete SQL,
 
 if ($conn -> query($sql) == TRUE){}
 else
-            echo "alert(Erreur d'ajout :" . $sql . "<br>" . $conn->error."')";
+    echo "alert(Erreur d'ajout :" . $sql . "<br>" . $conn->error."')";
 
 
 $result = $conn->query($sql); //Execution de la requete SQL
 
+if (!isset($_SESSION["id_utilisateur"])){
+    if ($result->num_rows > 0) {
+        $a = strval($result['id_utilisateur']);
+        // echo $result['prenom'];                 
+        $_SESSION['id_utilisateur'] = strval($a);//$result['id_utilisateur'];
+    }
+}
 
 ?>
-
-<!DOCTYPE html>
-<html>
-      <!-- <?php
-        if (!isset($_SESSION["id_utilisateur"])){
-            // if ($result->num_rows > 0) {
-                echo $result['prenom'];                 
-                $_SESSION['id_utilisateur'] = $result['id_utilisateur'];
-            // }
-        }
-      ?> -->
-</body>
-
-<head><title>PHP</title></head>
-<body>
 
 <h1> Renseigne tes informations personnel</h1>
 <form action="../admin/admin_addAvion.php" method="post">

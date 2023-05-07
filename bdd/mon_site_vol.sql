@@ -30,6 +30,7 @@ CREATE TABLE `vol` (
   `arrive` varchar(45) DEFAULT NULL,
   `date_dep` date DEFAULT NULL,
   `termine` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `nb_places_libre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_vol`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -40,7 +41,7 @@ CREATE TABLE `vol` (
 
 LOCK TABLES `vol` WRITE;
 /*!40000 ALTER TABLE `vol` DISABLE KEYS */;
-INSERT INTO `vol` VALUES (1,1,1,'Paris','Londres','2023-01-01','0');
+INSERT INTO `vol` VALUES (1,1,1,'Paris','Londres','2023-01-01','0',NULL);
 /*!40000 ALTER TABLE `vol` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-07 18:03:38
+-- Dump completed on 2023-05-07 20:54:35

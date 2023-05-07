@@ -36,10 +36,12 @@ CREATE TABLE `utilisateurs` (
   `numero_de_passeport` int DEFAULT NULL,
   `role` varchar(45) DEFAULT NULL,
   `numero_tel` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_utilisateur`),
   UNIQUE KEY `identifiant_UNIQUE` (`identifiant`),
-  UNIQUE KEY `numero_de_passeport_UNIQUE` (`numero_de_passeport`)
-) ENGINE=MyISAM AUTO_INCREMENT=3;
+  UNIQUE KEY `numero_de_passeport_UNIQUE` (`numero_de_passeport`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=MyISAM AUTO_INCREMENT=4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +50,7 @@ CREATE TABLE `utilisateurs` (
 
 LOCK TABLES `utilisateurs` WRITE;
 /*!40000 ALTER TABLE `utilisateurs` DISABLE KEYS */;
-INSERT INTO `utilisateurs` VALUES (1,'farsi','mohamed','mohamed1',23,'Française','France','Paris','2 villa vernier Saint Maur','123456789',123456789,'client',NULL),(2,'super','ryan','super',23,'Française','France','Bondy','Guada','1234',123456787,'admin',NULL);
+INSERT INTO `utilisateurs` VALUES (1,'farsi','mohamed','mohamed1',23,'Française','France','Paris','2 villa vernier Saint Maur','123456789',123456789,'client',NULL,NULL),(2,'super','ryan','super',23,'Française','France','Bondy','Guada','1234',123456787,'admin',NULL,NULL),(3,'Arthur12','1234','arthur12@gmail.com',0,'Arthur','23','Française','France','Paris',0,'019298833','','client');
 /*!40000 ALTER TABLE `utilisateurs` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -61,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-07 18:03:40
+-- Dump completed on 2023-05-07 20:54:35
