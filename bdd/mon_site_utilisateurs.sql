@@ -26,13 +26,13 @@ CREATE TABLE `utilisateurs` (
   `id_utilisateur` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
   `prenom` varchar(45) DEFAULT NULL,
-  `identifiant` varchar(45) DEFAULT NULL,
+  `identifiant` varchar(45) NOT NULL,
   `age` int DEFAULT NULL,
   `nationalite` varchar(45) DEFAULT NULL,
   `pays_naissance` varchar(45) DEFAULT NULL,
   `ville_naissance` varchar(45) DEFAULT NULL,
   `adresse` varchar(45) DEFAULT NULL,
-  `mot_de_passe` varchar(45) DEFAULT NULL,
+  `mot_de_passe` varchar(100) DEFAULT NULL,
   `numero_de_passeport` int DEFAULT NULL,
   `role` varchar(45) DEFAULT NULL,
   `numero_tel` varchar(45) DEFAULT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `utilisateurs` (
   UNIQUE KEY `identifiant_UNIQUE` (`identifiant`),
   UNIQUE KEY `numero_de_passeport_UNIQUE` (`numero_de_passeport`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=4;
+) ENGINE=MyISAM AUTO_INCREMENT=13 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ CREATE TABLE `utilisateurs` (
 
 LOCK TABLES `utilisateurs` WRITE;
 /*!40000 ALTER TABLE `utilisateurs` DISABLE KEYS */;
-INSERT INTO `utilisateurs` VALUES (1,'farsi','mohamed','mohamed1',23,'Française','France','Paris','2 villa vernier Saint Maur','123456789',123456789,'client',NULL,NULL),(2,'super','ryan','super',23,'Française','France','Bondy','Guada','1234',123456787,'admin',NULL,NULL),(3,'Arthur12','1234','arthur12@gmail.com',0,'Arthur','23','Française','France','Paris',0,'019298833','','client');
+INSERT INTO `utilisateurs` VALUES (1,'farsi','mohamed','mohamed1',23,'Française','France','Paris','2 villa vernier Saint Maur','123456789',123456789,'client',NULL,NULL),(2,'super','ryan','super',23,'Française','France','Bondy','Guada','1234',123456787,'admin',NULL,'momo@m'),(5,'1233','2222','ss',2333,'9','8','8','8','1234',8,'33','88','Alex@le'),(11,'','','hello',0,'','','','','',0,'','','Alex@lemsms');
 /*!40000 ALTER TABLE `utilisateurs` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -63,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-07 20:54:35
+-- Dump completed on 2023-05-08 16:33:06

@@ -1,4 +1,5 @@
 <?php
+session_start();
     $srvname = "localhost";
     $usrname = "root";
     $psw = "";

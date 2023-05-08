@@ -16,32 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `vol`
+-- Table structure for table `reservation`
 --
 
-DROP TABLE IF EXISTS `vol`;
+DROP TABLE IF EXISTS `reservation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `vol` (
-  `id_vol` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `reservation` (
+  `id_reservation` int NOT NULL,
+  `id_vol` int DEFAULT NULL,
   `id_avion` int DEFAULT NULL,
-  `depart` varchar(45) DEFAULT NULL,
-  `arrive` varchar(45) DEFAULT NULL,
-  `date_dep` date DEFAULT NULL,
-  `termine` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `nb_places_libre` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_vol`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 ;
+  `id_utilisateurs` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_reservation`)
+) ENGINE=MyISAM ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `vol`
+-- Dumping data for table `reservation`
 --
 
-LOCK TABLES `vol` WRITE;
-/*!40000 ALTER TABLE `vol` DISABLE KEYS */;
-INSERT INTO `vol` VALUES (1,1,1,'Paris','Londres','2023-01-01','0',NULL);
-/*!40000 ALTER TABLE `vol` ENABLE KEYS */;
+LOCK TABLES `reservation` WRITE;
+/*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
