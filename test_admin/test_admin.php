@@ -11,7 +11,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);  //connexion à 
 $listeAvion = "SELECT * FROM avion"; //Requete SQL, 
 $listeDest = "SELECT * FROM destination"; //Requete SQL, 
 $sql = "SELECT * FROM utilisateurs where prenom = 'ryan'"; //Requete SQL, 
-//$sql = "SELECT * FROM vol"; //Requete SQL, 
+$listeVol = "SELECT * FROM vol where termine = 0"; //Requete SQL, 
 
 if ($conn -> query($sql) == TRUE)
     $result = $conn->query($sql); //Execution de la requete SQL
@@ -163,7 +163,7 @@ if (!isset($_SESSION["id_utilisateur"])){
                             echo "<td id ='case'>".$row["nb_places"]."</td>";
                             echo "<td id ='case'>
                             <input type='hidden' name='id' value=".$row["id_avion"].">
-                            <button type='submit'>Supprimer</button></td>";
+                            <button type='submit' name = 'id_".$row["id_avion"]."'>Supprimer</button></td>";
                         echo '</tr>';
                     }
                 }
@@ -175,22 +175,39 @@ if (!isset($_SESSION["id_utilisateur"])){
 
 
 <!-- ////////////////////////////////////////////////////////////////////-->
-<form action="../admin/admin_addAvion.php" method="post">
-    <fieldset>
-    <legend>Insertion avions</legend>
-        <table>
+<form method="post"> <!--action="../admin/admin_deleteVol.php"-->
+<fieldset>
+    <legend>Delete vol</legend>
+        <table id ="tableau">
+
             <tr>
-                <td>Modele</td>
-                <td><input type="text" name="model" required></td>
+                <th id ="case">ID avion</th>
+                <th id ="case">Depart</th>
+                <th id ="case">Arrivé</th>
+                <th id ="case">Date de départ</th>
+                <th id ="case">Nombre de place libre</th>
+                <th id ="case">Action</th>
             </tr>
-            <tr>
-                <td>Nombre de place</td>
-                <td><input type="number" name="nb_places" required></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Insertion"></td>
-                <td><input type="reset" value="Reinitialiser"></td>
-            </tr>	
+
+            <?php
+                $resultVol = $conn->query($listeVol);
+                if ($resultVol->num_rows > 0) {                                 
+                    while($row = $resultVol->fetch_assoc()) {
+                        echo '<tr>';
+                            echo "<td id ='case'>".$row["id_vol"]."</td>";
+                            echo "<td id ='case'>".$row["id_avion"]."</td>";
+                            echo "<td id ='case'>".$row["depart"]."</td>";
+                            echo "<td id ='case'>".$row["arrive"]."</td>";
+                            echo "<td id ='case'>".$row["date_dep"]."</td>";
+                            echo "<td id ='case'>".$row["nb_places_libre"]."</td>";
+                            echo "<td id ='case'>
+                            <input type='hidden' name='id' value=".$row["id_vol"].">
+                            <button type='submit' name='supp_".$row["id_vol"]."' formaction='../admin/admin_deleteVol.php'>Supprimer</button>
+                            <button type='submit' name='modif_".$row["id_vol"]."' formaction='../admin/admin_finDeVol.php'>Cloturer le vol</button></td>";
+                        echo '</tr>';
+                    }
+                }
+            ?>	
         </table>
     </fieldset>
 </form>

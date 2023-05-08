@@ -16,7 +16,18 @@ session_start();
             $row0 = $result->fetch_assoc();
             if($row0['role'] == 'admin'){
 
-                $sql = "SELECT id_vol FROM vol WHERE id_avion = '" . $_POST['id'] . "'"; //Est-ce que je trouve un vol avec mon avion ?
+                $sql = "SELECT max(id_avion) as id_avion FROM avion";
+                $result = $connect->query($sql);
+                $row = $result->fetch_assoc();
+                
+                for ($i = 0; $i <= $row['id_avion']; $i++){
+                    if(isset($_POST["id_".$i])){
+                        $id = $i;
+                        $i = $row;
+                    }
+                }
+
+                $sql = "SELECT id_vol FROM vol WHERE id_avion = '" .$id . "'"; //Est-ce que je trouve un vol avec mon avion ?
                 $result = $connect->query($sql);
                 if ($result->num_rows > 0) {//Si oui, je supprime les réservations et le vol
 
@@ -27,7 +38,7 @@ session_start();
                             $sql = "DELETE FROM vol WHERE id_vol = '" . $row1['id_vol'] . "'";
 
                             if ($connect -> query($sql) == TRUE){
-                                $sql = "DELETE FROM avion WHERE id_avion = '" . $_POST['id'] . "'";
+                                $sql = "DELETE FROM avion WHERE id_avion = '" . $id . "'";
 
                                 if ($connect -> query($sql) == TRUE){
                                     echo "<script>alert('Suppression des réservations, du vol et de l'avion effectué !')</script>";
@@ -43,7 +54,7 @@ session_start();
                     }
 
                 } else { //Sinon je ne supprime que l'avion
-                    $sql = "DELETE FROM avion WHERE id_avion = '" . $_POST['id'] . "'";
+                    $sql = "DELETE FROM avion WHERE id_avion = '" . $id . "'";
                     if ($connect -> query($sql) == TRUE){
                         echo "<script>alert('Suppression des réservations, du vol et de l'avion effectué !')</script>";
                         echo("<script>window.location = '../test_admin/test_admin.php';</script>");

@@ -1,3 +1,5 @@
+modif destination, avion
+
 <?php
     $srvname = "localhost";
     $usrname = "root";
@@ -15,20 +17,22 @@
             
             if($result['role'] == 'admin'){
 
-                $sql = "SELECT max(id_utilisateur) as id_utilisateur FROM utilisateur";
+                $sql = "SELECT max(id_vol) as id_vol FROM vol";
                 $result = $connect->query($sql);
                 $row = $result->fetch_assoc();
                 
-                for ($i = 0; $i <= $row['id_utilisateur']; $i++){
+                for ($i = 0; $i <= $row['id_vol']; $i++){
                     if(isset($_POST["id_".$i])){
                         $id = $i;
                         $i = $row;
                     }
                 }
 
-                $sql = "UPDATE utilisateur 
-                SET role = '".$_POST["role_".$id.'"']."' 
-                WHERE id_utilisateur ='".$id."'";
+                $sql = "UPDATE vol 
+                SET depart = '".$_POST["depart_".$id.'"']."', 
+                arrive = '".$_POST["arrive_".$id.'"']."',
+                id_avion = '".$_POST["id_avion_".$id.'"']."' 
+                WHERE id_vol ='".$id."'";
 
                 if ($connect -> query($sql) == TRUE)
                     echo "<script>alert('Mise à jour effectué !')</script>";
