@@ -12,6 +12,7 @@ $listeAvion = "SELECT * FROM avion"; //Requete SQL,
 $listeDest = "SELECT * FROM destination"; //Requete SQL, 
 $sql = "SELECT * FROM utilisateurs where prenom = 'ryan'"; //Requete SQL, 
 $listeVol = "SELECT * FROM vol where termine = 0"; //Requete SQL, 
+$listeUtilisateur = "SELECT * FROM utilisateurs"; //Requete SQL, 
 
 if ($conn -> query($sql) == TRUE)
     $result = $conn->query($sql); //Execution de la requete SQL
@@ -211,5 +212,43 @@ if (!isset($_SESSION["id_utilisateur"])){
         </table>
     </fieldset>
 </form>
+
+<!-- ////////////////////////////////////////////////////////////////////-->
+<form method="post"> <!--action="../admin/admin_deleteVol.php"-->
+<fieldset>
+    <legend>Donner droit admin</legend>
+        <table id ="tableau">
+
+            <tr>
+                <th id ="case">Identifiant Utilisateur</th>
+                <th id ="case">Nom</th>
+                <th id ="case">Prenom</th>
+                <th id ="case">Email</th>
+                <th id ="case">Droit actuel</th>
+                <th id ="case">Action</th>
+            </tr>
+
+            <?php
+                $resultUtilisateur = $conn->query($listeUtilisateur);
+                if ($resultUtilisateur->num_rows > 0) {                                 
+                    while($row = $resultUtilisateur->fetch_assoc()) {
+                        echo '<tr>';
+                            echo "<td id ='case'>".$row["identifiant"]."</td>";
+                            echo "<td id ='case'>".$row["nom"]."</td>";
+                            echo "<td id ='case'>".$row["prenom"]."</td>";
+                            echo "<td id ='case'>".$row["email"]."</td>";
+                            echo "<td id ='case'>".$row["role"]."</td>";
+                            echo "<td id ='case'>
+                            <input type='hidden' name='role_".$row["id_utilisateur"]."' value=".$row["role"].">
+                           
+                            <button type='submit' name='modif_".$row["id_utilisateur"]."' formaction='../admin/admin_updateRoleUser.php'>Modifier droit</button></td>";
+                        echo '</tr>';
+                    }
+                }
+            ?>	
+        </table>
+    </fieldset>
+</form>
+
 
 </html>

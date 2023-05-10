@@ -32,9 +32,10 @@ modif nb place
                 SET nb_places = '".$_POST["nb_places_".$id.'"']."' 
                 WHERE id_avion ='".$id."'";
 
-                if ($connect -> query($sql) == TRUE)
+                if ($connect -> query($sql) == TRUE){
                     echo "<script>alert('Mise à jour effectué !')</script>";
-                else
+                    echo("<script>window.location = '../test_admin/test_admin.php';</script>");
+                }else
                     echo "Erreur de modification :" . $sql . "<br>" . $connect->error;
             }
         }

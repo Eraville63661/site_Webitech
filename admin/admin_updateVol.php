@@ -34,9 +34,10 @@ modif destination, avion
                 id_avion = '".$_POST["id_avion_".$id.'"']."' 
                 WHERE id_vol ='".$id."'";
 
-                if ($connect -> query($sql) == TRUE)
+                if ($connect -> query($sql) == TRUE){
                     echo "<script>alert('Mise à jour effectué !')</script>";
-                else
+                    echo("<script>window.location = '../test_admin/test_admin.php';</script>");
+                }else
                     echo "Erreur de modification :" . $sql . "<br>" . $connect->error;
             }
         }
