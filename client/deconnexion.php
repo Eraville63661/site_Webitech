@@ -10,4 +10,4 @@
 	// Redirection vers la page d'accueil
 	header("Location: index1.html");
 	exit();
-?>
+?> 
